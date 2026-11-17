@@ -1,0 +1,366 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Guilherme Argenta · Desenvolvedor</title>
+<meta name="description" content="Portfólio de Guilherme Argenta, desenvolvedor: sistemas no ar, projeto de TCC e projetos em desenvolvimento.">
+<style>
+  :root {
+    --bg: #f7f8f6;
+    --surface: #ffffff;
+    --text: #1c2321;
+    --muted: #5d6762;
+    --border: #e1e5e2;
+    --accent: #1f7a57;
+    --accent-hover: #17614a;
+    --accent-soft: #e5f2ec;
+    --tag-bg: #eef1ef;
+    --live: #1f9d63;
+    --tcc: #3b6fd1;
+    --tcc-soft: #e7eefb;
+    --dev: #b7791f;
+    --dev-soft: #fbf1e1;
+    --radius: 14px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #121614;
+      --surface: #1a201d;
+      --text: #e6ebe8;
+      --muted: #9aa5a0;
+      --border: #2b3330;
+      --accent: #4cc093;
+      --accent-hover: #6fd3ab;
+      --accent-soft: #1d332a;
+      --tag-bg: #232b27;
+      --live: #4cc093;
+      --tcc: #7fa6ef;
+      --tcc-soft: #1f2a3f;
+      --dev: #e0a54c;
+      --dev-soft: #352a19;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #121614;
+    --surface: #1a201d;
+    --text: #e6ebe8;
+    --muted: #9aa5a0;
+    --border: #2b3330;
+    --accent: #4cc093;
+    --accent-hover: #6fd3ab;
+    --accent-soft: #1d332a;
+    --tag-bg: #232b27;
+    --live: #4cc093;
+    --tcc: #7fa6ef;
+    --tcc-soft: #1f2a3f;
+    --dev: #e0a54c;
+    --dev-soft: #352a19;
+  }
+
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font: 16px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  }
+  a { color: var(--accent); }
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 16px; }
+
+  /* Cabeçalho */
+  header.top {
+    padding: 64px 0 40px;
+    border-bottom: 1px solid var(--border);
+  }
+  .top h1 {
+    margin: 0;
+    font-size: clamp(2rem, 6vw, 2.9rem);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+  }
+  .top .role {
+    margin: 6px 0 0;
+    font-size: 1.2rem;
+    color: var(--muted);
+  }
+  .links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+  .links a {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 8px 14px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: var(--surface);
+    color: var(--text);
+    text-decoration: none;
+    font-size: 0.95rem;
+  }
+  .links a:hover { border-color: var(--accent); color: var(--accent); }
+  .links svg { width: 18px; height: 18px; fill: currentColor; }
+
+  nav.sections { display: flex; flex-wrap: wrap; gap: 18px; margin-top: 28px; font-size: 0.95rem; }
+  nav.sections a { color: var(--muted); text-decoration: none; }
+  nav.sections a:hover { color: var(--accent); }
+
+  /* Seções */
+  section { padding: 48px 0 8px; }
+  section > h2 {
+    margin: 0 0 6px;
+    font-size: 1.5rem;
+    letter-spacing: -0.01em;
+  }
+  section > .lead { margin: 0 0 24px; color: var(--muted); }
+
+  .grid { display: grid; gap: 20px; grid-template-columns: 1fr; }
+  @media (min-width: 820px) { .grid { grid-template-columns: 1fr 1fr; } }
+
+  .card {
+    display: flex; flex-direction: column;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px;
+    min-width: 0;
+  }
+  .card.wide { grid-column: 1 / -1; }
+  .card h3 { margin: 10px 0 4px; font-size: 1.25rem; line-height: 1.3; }
+  .card .summary { margin: 0 0 14px; color: var(--muted); }
+  .card .meta { margin: 0 0 14px; font-size: 0.92rem; color: var(--muted); }
+  .card .meta strong { color: var(--text); font-weight: 600; }
+
+  .badge {
+    align-self: flex-start;
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 3px 10px;
+    border-radius: 999px;
+    font-size: 0.8rem; font-weight: 600;
+  }
+  .badge::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+  .badge.live { color: var(--live); background: var(--accent-soft); }
+  .badge.tcc { color: var(--tcc); background: var(--tcc-soft); }
+  .badge.dev { color: var(--dev); background: var(--dev-soft); }
+
+  .card h4 {
+    margin: 4px 0 6px;
+    font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.06em;
+    color: var(--muted);
+  }
+  .card ul.features { margin: 0 0 18px; padding-left: 20px; }
+  .card ul.features li { margin-bottom: 4px; }
+
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 20px; padding: 0; list-style: none; }
+  .tags li {
+    padding: 3px 9px;
+    border-radius: 6px;
+    background: var(--tag-bg);
+    font-size: 0.82rem;
+  }
+
+  .btn {
+    margin-top: auto;
+    align-self: flex-start;
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 10px 18px;
+    border-radius: 10px;
+    background: var(--accent);
+    color: #fff;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  :root[data-theme="dark"] .btn { color: #0f1a15; }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .btn { color: #0f1a15; } }
+  .btn:hover { background: var(--accent-hover); }
+  .btn svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; }
+
+  footer {
+    margin-top: 56px;
+    padding: 28px 0 40px;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <h1>Guilherme Argenta</h1>
+    <p class="role">Desenvolvedor</p>
+    <div class="links">
+      <!-- [PREENCHER] link do GitHub -->
+      <a href="#" aria-label="GitHub">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.53-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.42-2.7 5.4-5.26 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z"/></svg>
+        GitHub [PREENCHER]
+      </a>
+      <!-- [PREENCHER] link do LinkedIn -->
+      <a href="#" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0Z"/></svg>
+        LinkedIn [PREENCHER]
+      </a>
+    </div>
+    <nav class="sections" aria-label="Seções">
+      <a href="#no-ar">No ar</a>
+      <a href="#tcc">Projeto de TCC</a>
+      <a href="#em-desenvolvimento">Em desenvolvimento</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- ================= NO AR ================= -->
+  <section id="no-ar">
+    <h2>No ar</h2>
+    <p class="lead">Sistemas publicados e em uso.</p>
+    <div class="grid">
+
+      <article class="card">
+        <span class="badge live">No ar</span>
+        <h3>Bolão da Gurizada</h3>
+        <p class="summary">Sistema web para organizar bolões de loteria entre amigos, com cotas, pagamento por PIX e sorteios.</p>
+        <p class="meta"><strong>No ar desde 04/11</strong> · 11 usuários nas duas primeiras semanas</p>
+        <h4>Funcionalidades</h4>
+        <ul class="features">
+          <li>Bolões com vagas limitadas ou abertos, escolha de cota e limite de cotas por pessoa</li>
+          <li>QR Code PIX gerado no próprio sistema, envio de comprovante e conferência pelos moderadores</li>
+          <li>Concurso, prêmio estimado e resultados buscados na API pública da Caixa, com conferência automática dos acertos</li>
+          <li>Rateio do prêmio por cota, histórico de cada participante, ranking e conquistas</li>
+          <li>Notificações push (PWA), revelação do sorteio ao vivo e link com prévia para o WhatsApp</li>
+          <li>Login com Google, perfis de acesso e auditoria de todas as alterações</li>
+        </ul>
+        <h4>Tecnologias</h4>
+        <ul class="tags">
+          <li>Java 25</li><li>Spring Boot 4</li><li>Spring Security</li><li>PostgreSQL 18</li><li>Flyway</li><li>Hibernate Envers</li>
+          <li>React 19</li><li>TypeScript</li><li>Vite</li><li>Tailwind CSS</li><li>TanStack Query</li>
+          <li>Docker</li><li>Caddy</li><li>Oracle Cloud</li>
+        </ul>
+        <a class="btn" href="https://bolaoloterias.duckdns.org/" target="_blank" rel="noopener">Acessar
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+      </article>
+
+      <article class="card">
+        <span class="badge live">No ar</span>
+        <h3>ViewVerde</h3>
+        <p class="summary">Portal público de dados ambientais de Esteio/RS, feito na Residência em TIC 55 (Unisinos/BRISA) para a Secretaria de Meio Ambiente.</p>
+        <p class="meta">Trabalho em equipe com daily, sprints, Jira, Confluence e banca avaliadora.</p>
+        <h4>Funcionalidades</h4>
+        <ul class="features">
+          <li>Portal aberto ao cidadão, sem login, com dashboards de qualidade da água, qualidade do ar, arborização urbana e bem-estar animal</li>
+          <li>Mapas interativos da arborização e dos pontos de coleta de água</li>
+          <li>Página inicial com indicadores agregados em formato de semáforo</li>
+          <li>Painel administrativo para a secretaria: gerenciamento dos dados, importação de planilhas, histórico de importações, relatórios e gestão de usuários</li>
+        </ul>
+        <h4>Tecnologias</h4>
+        <ul class="tags">
+          <li>Java 25</li><li>Spring Boot 4</li><li>Spring Security + JWT</li><li>PostgreSQL</li><li>Apache POI</li><li>JasperReports</li>
+          <li>Angular 21</li><li>PrimeNG</li><li>Tailwind CSS</li><li>Leaflet</li><li>ApexCharts</li>
+          <li>Docker</li><li>Vercel</li>
+        </ul>
+        <a class="btn" href="https://www.viewverde.com.br/" target="_blank" rel="noopener">Acessar
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+      </article>
+
+      <article class="card">
+        <span class="badge live">No ar</span>
+        <h3>Tri Legal da Semana</h3>
+        <p class="summary">Site de revenda do título Tri Legal da semana, com compra por Pix e painel do revendedor.</p>
+        <h4>Funcionalidades</h4>
+        <ul class="features">
+          <li>Vitrine com a edição da semana; as vendas abrem e fecham conforme o calendário do sorteio</li>
+          <li>Pedido com QR Code Pix e código do pedido, com confirmação pelo WhatsApp</li>
+          <li>Painel do revendedor: confirmar pagamentos, registrar os números dos títulos e cadastrar os prêmios da edição</li>
+          <li>Pedidos pendentes cancelados automaticamente, verificação anti-robô (Cloudflare Turnstile) e bloqueio de força bruta no login</li>
+          <li>Dados da edição sincronizados automaticamente por uma rotina agendada com Playwright</li>
+        </ul>
+        <h4>Tecnologias</h4>
+        <ul class="tags">
+          <li>Java 25</li><li>Spring Boot 4</li><li>PostgreSQL 18</li><li>Flyway</li><li>Hibernate Envers</li><li>Playwright</li>
+          <li>React 19</li><li>TypeScript</li><li>Vite</li>
+          <li>Render</li><li>Supabase</li><li>GitHub Actions</li>
+        </ul>
+        <a class="btn" href="https://revenda-trilegal.onrender.com/" target="_blank" rel="noopener">Acessar
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+      </article>
+
+      <article class="card">
+        <span class="badge live">No ar</span>
+        <h3>Loja MEI</h3>
+        <p class="summary">Sistema de gestão para lojas de roupas, feito para usar no celular. Em uso por uma empresa do setor.</p>
+        <h4>Funcionalidades</h4>
+        <ul class="features">
+          <li>Ficha de cada cliente com saldo: vendas à vista ou fiado, parcelamento em até 24 vezes no dia de acerto e crédito para valor pago a mais</li>
+          <li>Cobrança das clientes em atraso e comprovantes de venda e pagamento enviados pelo WhatsApp</li>
+          <li>Estoque por cor e tamanho, com foto da peça, baixa na venda e devolução no cancelamento</li>
+          <li>Fechamento do mês com gráfico, lucro, clientes que mais compraram, taxas da maquininha e acompanhamento do limite anual do MEI</li>
+          <li>Funciona sem internet (PWA): vendas e recebimentos ficam numa fila no celular e são enviados sem duplicar quando a conexão volta</li>
+          <li>Acesso da dona e da ajudante, histórico de quem alterou o quê e backup diário do banco</li>
+        </ul>
+        <h4>Tecnologias</h4>
+        <ul class="tags">
+          <li>Java 25</li><li>Spring Boot 4</li><li>Spring Security</li><li>PostgreSQL 18</li><li>Flyway</li><li>Hibernate Envers</li>
+          <li>React 19</li><li>TypeScript</li><li>Vite</li><li>TanStack Query</li><li>PWA</li>
+          <li>Docker</li><li>Render</li><li>Supabase</li>
+        </ul>
+        <a class="btn" href="https://loja-mei.onrender.com/" target="_blank" rel="noopener">Acessar
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ================= TCC ================= -->
+  <section id="tcc">
+    <h2>Projeto de TCC</h2>
+    <p class="lead">Projeto concluído, desenvolvido como Trabalho de Conclusão de Curso.</p>
+    <div class="grid">
+      <article class="card wide">
+        <span class="badge tcc">TCC · concluído</span>
+        <h3>Gestão Academia</h3>
+        <p class="summary">Sistema web de gestão para academias de pequeno porte, com previsão do risco de abandono dos alunos.</p>
+        <h4>Funcionalidades</h4>
+        <ul class="features">
+          <li>Planos, matrículas (renovação, cancelamento e desconto com motivo) e cobranças, com lista de inadimplentes e cobrança pelo WhatsApp</li>
+          <li>Check-in feito pelo aluno ou pela recepção, bloqueado para matrícula vencida ou pagamento em atraso</li>
+          <li>Avaliação física: IMC, relação cintura-quadril e % de gordura por dobras cutâneas (Jackson &amp; Pollock), com gráfico de evolução</li>
+          <li>Anamnese com questionário PAR-Q e consentimento conforme a LGPD</li>
+          <li>Risco de abandono calculado por regras ponderadas (tempo sem treinar, queda de frequência, medidas e inadimplência), com os motivos de cada aluno</li>
+          <li>Painel do instrutor com indicadores e vencimentos; área do aluno com check-in pelo celular, plano, pagamentos e evolução</li>
+        </ul>
+        <h4>Tecnologias</h4>
+        <ul class="tags">
+          <li>Java 25</li><li>Spring Boot 4</li><li>Spring Security (JWT)</li><li>Spring Data JPA</li><li>Flyway</li><li>MapStruct</li><li>PostgreSQL 18</li><li>OpenAPI/Swagger</li>
+          <li>JUnit 5</li><li>Mockito</li>
+          <li>React 19</li><li>TypeScript</li><li>Vite</li><li>Mantine</li><li>Recharts</li>
+          <li>Docker</li><li>GitHub Actions</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <!-- ================= EM DESENVOLVIMENTO ================= -->
+  <section id="em-desenvolvimento">
+    <h2>Em desenvolvimento</h2>
+    <p class="lead">Projetos ainda em construção.</p>
+    <div class="grid">
+      <article class="card wide">
+        <span class="badge dev">Em desenvolvimento</span>
+        <h3>InvestSmart</h3>
+        <p class="summary">Painel para investidores acompanharem ações do Brasil e dos EUA e ETFs, avaliando cada ativo por estratégias de investidores clássicos (Graham, Lynch, Buffett, Greenblatt, Bazin) e gerando alertas quando um ativo se destaca.</p>
+        <h4>Tecnologias</h4>
+        <ul class="tags">
+          <li>Java 25</li><li>Spring Boot 4</li><li>Spring Modulith</li><li>PostgreSQL 17</li><li>Redis</li><li>RabbitMQ</li><li>Keycloak</li><li>Resilience4j</li><li>Docker</li><li>Testcontainers</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">© 2026 Guilherme Argenta</div>
+</footer>
+
+</body>
+</html>
